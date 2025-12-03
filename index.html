@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafe Management System</title>
+    <title>Cafe/Mess Management System</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -291,33 +291,39 @@
 
     <script>
         const menuItems = [
-            { id: 1, name: 'Cappuccino', category: 'beverages', price: 120, description: 'Rich Italian coffee', emoji: '☕' },
-            { id: 2, name: 'Masala Chai', category: 'beverages', price: 30, description: 'Spiced Indian tea', emoji: '🍵' },
-            { id: 3, name: 'Filter Coffee', category: 'beverages', price: 40, description: 'South Indian coffee', emoji: '☕' },
-            { id: 4, name: 'Latte', category: 'beverages', price: 130, description: 'Smooth coffee with milk', emoji: '☕' },
-            { id: 5, name: 'Samosa', category: 'snacks', price: 40, description: 'Spicy potato pastry', emoji: '🥟' },
-            { id: 6, name: 'Pav Bhaji', category: 'snacks', price: 120, description: 'Mumbai street food', emoji: '🍛' },
-            { id: 7, name: 'Veg Burger', category: 'snacks', price: 100, description: 'Crispy veg burger', emoji: '🍔' },
-            { id: 8, name: 'French Fries', category: 'snacks', price: 80, description: 'Golden potato fries', emoji: '🍟' },
-            { id: 9, name: 'Butter Chicken', category: 'indian', price: 280, description: 'Creamy chicken curry', emoji: '🍗' },
-            { id: 10, name: 'Paneer Tikka Masala', category: 'indian', price: 250, description: 'Spicy paneer gravy', emoji: '🧀' },
-            { id: 11, name: 'Dal Makhani', category: 'indian', price: 180, description: 'Creamy black lentils', emoji: '🍲' },
-            { id: 12, name: 'Chicken Biryani', category: 'indian', price: 220, description: 'Aromatic rice dish', emoji: '🍛' },
-            { id: 13, name: 'Veg Biryani', category: 'indian', price: 180, description: 'Fragrant veg rice', emoji: '🍛' },
-            { id: 14, name: 'Tandoori Chicken', category: 'indian', price: 300, description: 'Clay oven chicken', emoji: '🍗' },
-            { id: 15, name: 'Chole Bhature', category: 'indian', price: 140, description: 'Chickpea with bread', emoji: '🫓' },
-            { id: 16, name: 'Palak Paneer', category: 'indian', price: 200, description: 'Spinach cottage cheese', emoji: '🥬' },
-            { id: 17, name: 'Rogan Josh', category: 'indian', price: 320, description: 'Kashmiri lamb curry', emoji: '🍖' },
-            { id: 18, name: 'Malai Kofta', category: 'indian', price: 230, description: 'Veg balls in gravy', emoji: '🥘' },
-            { id: 19, name: 'Pasta Alfredo', category: 'main', price: 200, description: 'Creamy white pasta', emoji: '🍝' },
-            { id: 20, name: 'Margherita Pizza', category: 'main', price: 350, description: 'Classic cheese pizza', emoji: '🍕' },
-            { id: 21, name: 'Veg Fried Rice', category: 'main', price: 150, description: 'Chinese fried rice', emoji: '🍚' },
-            { id: 22, name: 'Gulab Jamun', category: 'desserts', price: 60, description: 'Sweet milk balls', emoji: '🍡' },
-            { id: 23, name: 'Ras Malai', category: 'desserts', price: 80, description: 'Sweet cream dessert', emoji: '🥛' },
-            { id: 24, name: 'Brownie', category: 'desserts', price: 120, description: 'Chocolate fudge', emoji: '🍫' },
-            { id: 25, name: 'Kulfi', category: 'desserts', price: 70, description: 'Indian ice cream', emoji: '🍦' },
-            { id: 26, name: 'Jalebi', category: 'desserts', price: 50, description: 'Sweet crispy spirals', emoji: '🥨' }
-        ];
+           const messMenu = [
+    { id: 1, name: 'Morning Tea', category: 'beverages', price: 10, description: 'Fresh chai to start the day', emoji: '🍵' },
+    { id: 2, name: 'Milk Coffee', category: 'beverages', price: 15, description: 'Classic coffee with milk', emoji: '☕' },
+    { id: 3, name: 'Nimbu Pani', category: 'beverages', price: 20, description: 'Refreshing lemon drink', emoji: '🍋' },
+
+    { id: 4, name: 'Aloo Paratha', category: 'breakfast', price: 30, description: 'Stuffed potato paratha', emoji: '🥙' },
+    { id: 5, name: 'Poha', category: 'breakfast', price: 25, description: 'Light flattened rice dish', emoji: '🍚' },
+    { id: 6, name: 'Upma', category: 'breakfast', price: 25, description: 'South Indian semolina dish', emoji: '🥣' },
+    { id: 7, name: 'Idli Sambar', category: 'breakfast', price: 35, description: 'Steamed rice cakes', emoji: '🍛' },
+
+    { id: 8, name: 'Chapati', category: 'indian', price: 5, description: 'Soft wheat bread', emoji: '🫓' },
+    { id: 9, name: 'Dal Fry', category: 'indian', price: 40, description: 'Yellow lentils cooked with spices', emoji: '🍲' },
+    { id: 10, name: 'Mix Veg Curry', category: 'indian', price: 45, description: 'Vegetable curry with spices', emoji: '🥘' },
+    { id: 11, name: 'Rice', category: 'indian', price: 30, description: 'Steamed white rice', emoji: '🍚' },
+    { id: 12, name: 'Rajma', category: 'indian', price: 50, description: 'Red kidney bean curry', emoji: '🍛' },
+    { id: 13, name: 'Kaddu Sabzi', category: 'indian', price: 35, description: 'Mild pumpkin curry', emoji: '🎃' },
+    { id: 14, name: 'Soya Chaap', category: 'indian', price: 60, description: 'Protein-rich soya sticks', emoji: '🍢' },
+
+    { id: 15, name: 'Veg Thali', category: 'main', price: 80, description: 'Full plate meal with chapati, rice, sabzi, dal', emoji: '🍽️' },
+    { id: 16, name: 'Special Thali', category: 'main', price: 120, description: 'Thali with paneer + sweet + extra sabzi', emoji: '🍱' },
+    { id: 17, name: 'Curd', category: 'main', price: 20, description: 'Fresh homemade curd', emoji: '🥛' },
+    { id: 18, name: 'Paneer Curry', category: 'main', price: 70, description: 'Creamy paneer gravy', emoji: '🧀' },
+
+    { id: 19, name: 'Gulab Jamun', category: 'desserts', price: 20, description: 'Sweet syrupy balls', emoji: '🍡' },
+    { id: 20, name: 'Kheer', category: 'desserts', price: 25, description: 'Sweet rice pudding', emoji: '🍮' },
+    { id: 21, name: 'Halwa', category: 'desserts', price: 20, description: 'Warm Indian sweet', emoji: '🧁' },
+
+    { id: 22, name: 'Evening Snacks – Samosa', category: 'snacks', price: 12, description: 'Crispy potato samosa', emoji: '🥟' },
+    { id: 23, name: 'Bread Pakora', category: 'snacks', price: 15, description: 'Stuffed fried bread', emoji: '🍞' },
+    { id: 24, name: 'Veg Maggie', category: 'snacks', price: 25, description: 'Spicy desi Maggie noodles', emoji: '🍜' },
+    { id: 25, name: 'Pasta Masala', category: 'snacks', price: 30, description: 'Indian-style masala pasta', emoji: '🍝' }
+];
+
 
         let cart = [], orders = [], currentFilter = 'all';
 
