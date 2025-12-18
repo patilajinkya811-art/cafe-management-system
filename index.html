@@ -408,128 +408,25 @@
 <body>
     <div class="container">
         <header>
-            <h1>🍽 Mess Management System</h1>
+            <h1>🍽️ Mess Management System</h1>
         </header>
 
         <!-- Login Selection Page -->
         <div id="loginSelection" class="login-selection">
-            <div class="login-card owner" onclick="showLoginForm('owner')">
+            <div class="login-card owner" onclick="showDashboard('owner')">
                 <h2>👨‍💼 Mess Owner</h2>
                 <p>Manage menu, timings, members, and feedback</p>
-                <button class="btn btn-owner">Login / Register</button>
+                <button class="btn btn-owner">Login as Owner</button>
             </div>
-            <div class="login-card customer" onclick="showLoginForm('customer')">
-                <h2>🍴 Regular Member</h2>
-                <p>Monthly subscription members with accounts</p>
-                <button class="btn btn-customer">Login / Register</button>
+            <div class="login-card customer" onclick="showDashboard('customer')">
+                <h2>🍴 Customer</h2>
+                <p>Order food, check menu, and give feedback</p>
+                <button class="btn btn-customer">Login as Customer</button>
             </div>
-            <div class="login-card customer" onclick="showGuestDashboard()">
-                <h2>🍽 Guest</h2>
-                <p>No registration needed - Order directly</p>
-                <button class="btn btn-customer">Continue as Guest</button>
-            </div>
-            <div class="login-card worker" onclick="showLoginForm('worker')">
+            <div class="login-card worker" onclick="showDashboard('worker')">
                 <h2>👨‍🍳 Worker</h2>
                 <p>Manage tasks, serve orders, and handle bills</p>
-                <button class="btn btn-worker">Login / Register</button>
-            </div>
-        </div>
-
-        <!-- Login/Registration Form -->
-        <div id="loginForm" class="dashboard">
-            <button class="btn back-btn" onclick="showLogin()">← Back</button>
-            <div class="card" style="max-width: 500px; margin: 0 auto;">
-                <div style="text-align: center; margin-bottom: 30px;">
-                    <div style="display: inline-flex; background: #f0f0f0; padding: 5px; border-radius: 25px;">
-                        <button class="tab-btn active" id="loginTab" onclick="switchTab('login')" style="padding: 10px 30px; border: none; background: #fff; border-radius: 20px; cursor: pointer; font-weight: bold; margin-right: 5px;">Login</button>
-                        <button class="tab-btn" id="registerTab" onclick="switchTab('register')" style="padding: 10px 30px; border: none; background: transparent; border-radius: 20px; cursor: pointer; font-weight: bold;">Register</button>
-                    </div>
-                </div>
-
-                <h3 id="formTitle" style="text-align: center; margin-bottom: 20px;">Customer Login</h3>
-                
-                <!-- Login Form -->
-                <div id="loginFormContent">
-                    <div class="form-group">
-                        <label>Email/Phone</label>
-                        <input type="text" id="loginEmail" placeholder="Enter your email or phone">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="loginPassword" placeholder="Enter password">
-                    </div>
-                    <button class="btn btn-customer" id="loginBtn" onclick="processLogin()" style="width: 100%;">Login</button>
-                </div>
-
-                <!-- Registration Form -->
-                <div id="registrationFormContent" class="hidden">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="regName" placeholder="Enter your full name">
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="regEmail" placeholder="Enter your email">
-                    </div>
-                    <div class="form-group">
-                        <label>Phone Number</label>
-                        <input type="tel" id="regPhone" placeholder="Enter your phone number">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="regPassword" placeholder="Create a password (min 6 characters)">
-                    </div>
-                    <div class="form-group">
-                        <label>Confirm Password</label>
-                        <input type="password" id="regConfirmPassword" placeholder="Confirm your password">
-                    </div>
-                    
-                    <!-- Customer specific fields -->
-                    <div id="customerRegFields" class="hidden">
-                        <div class="form-group">
-                            <label>Address</label>
-                            <textarea id="regAddress" rows="2" placeholder="Enter your address"></textarea>
-                        </div>
-                        <p style="color: #666; font-size: 0.9em; margin-bottom: 15px;">
-                            ℹ You will be registered as a Regular Member with monthly subscription benefits.
-                        </p>
-                    </div>
-
-                    <!-- Worker specific fields -->
-                    <div id="workerRegFields" class="hidden">
-                        <div class="form-group">
-                            <label>Position</label>
-                            <select id="regPosition">
-                                <option value="waiter">Waiter</option>
-                                <option value="cook">Cook</option>
-                                <option value="cleaner">Cleaner</option>
-                                <option value="manager">Manager</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Experience (years)</label>
-                            <input type="number" id="regExperience" placeholder="Years of experience" min="0">
-                        </div>
-                    </div>
-
-                    <!-- Owner specific fields -->
-                    <div id="ownerRegFields" class="hidden">
-                        <div class="form-group">
-                            <label>Mess Name</label>
-                            <input type="text" id="regMessName" placeholder="Enter mess name">
-                        </div>
-                        <div class="form-group">
-                            <label>Business License Number</label>
-                            <input type="text" id="regLicense" placeholder="Enter license number">
-                        </div>
-                        <div class="form-group">
-                            <label>Mess Address</label>
-                            <textarea id="regMessAddress" rows="2" placeholder="Enter mess address"></textarea>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-customer" id="registerBtn" onclick="processRegistration()" style="width: 100%;">Register</button>
-                </div>
+                <button class="btn btn-worker">Login as Worker</button>
             </div>
         </div>
 
@@ -573,13 +470,6 @@
                     <div class="form-group">
                         <label>Price (1x size)</label>
                         <input type="number" id="dishPrice" placeholder="Enter price">
-                    </div>
-                    <div class="form-group">
-                        <label>Dish Image (Optional)</label>
-                        <input type="file" id="dishImage" accept="image/*" style="padding: 8px;">
-                        <div id="imagePreview" style="margin-top: 10px; display: none;">
-                            <img id="previewImg" style="max-width: 200px; border-radius: 8px; border: 2px solid #ff6b35;" />
-                        </div>
                     </div>
                     <button class="btn btn-owner" onclick="addMenuItem()">Add to Menu</button>
                     <div id="menuList" style="margin-top: 20px;"></div>
@@ -648,13 +538,12 @@
             </div>
 
             <div class="form-group" style="background: #fff; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                <label style="color: #1a1a1a;">Order Type</label>
+                <label style="color: #1a1a1a;">Are you a member?</label>
                 <select id="memberStatus" onchange="toggleMemberStatus()" style="max-width: 300px;">
-                    <option value="no">Guest (Pay after meal)</option>
+                    <option value="no">No, I'm a guest</option>
+                    <option value="regular">Yes, Regular Member</option>
+                    <option value="temp">Yes, Temporary Member</option>
                 </select>
-                <p style="color: #666; font-size: 0.9em; margin-top: 10px;">
-                    💡 Guests don't need accounts. Regular members with monthly subscriptions can login above.
-                </p>
             </div>
 
             <div class="card">
@@ -732,47 +621,6 @@
     </div>
 
     <script>
-        // API Configuration
-        const API_URL = 'http://localhost:5000/api';
-        let authToken = localStorage.getItem('authToken') || null;
-
-        // API Helper Functions
-        async function apiCall(endpoint, method = 'GET', body = null, isFormData = false) {
-            const headers = {};
-            
-            if (authToken) {
-                headers['Authorization'] = Bearer ${authToken};
-            }
-            
-            if (!isFormData && body) {
-                headers['Content-Type'] = 'application/json';
-            }
-
-            const config = {
-                method,
-                headers
-            };
-
-            if (body) {
-                config.body = isFormData ? body : JSON.stringify(body);
-            }
-
-            try {
-                const response = await fetch(${API_URL}${endpoint}, config);
-                const data = await response.json();
-                
-                if (!response.ok) {
-                    throw new Error(data.error || 'Something went wrong');
-                }
-                
-                return data;
-            } catch (error) {
-                console.error('API Error:', error);
-                alert(error.message);
-                throw error;
-            }
-        }
-
         // Data Storage
         const data = {
             menu: {
@@ -790,385 +638,55 @@
             currentOrder: [],
             selectedTable: null,
             isMember: false,
-            memberType: 'no',
-            users: {
-                customers: [],
-                workers: [],
-                owners: []
-            },
-            currentUser: null,
-            currentUserType: null
+            memberType: 'no'
         };
 
         // Initialize
         function init() {
-            // Load data from backend
-            loadMenu();
-            loadInstructions();
-            loadFeedback();
-            loadTableStatus();
-        }
+            // Sample data
+            data.menu.Breakfast.push({name: 'Poha', price: 40});
+            data.menu.Breakfast.push({name: 'Idli Sambar', price: 50});
+            data.menu.Lunch.push({name: 'Dal Rice', price: 80});
+            data.menu.Lunch.push({name: 'Roti Sabzi', price: 70});
+            data.menu.Dinner.push({name: 'Paneer Curry', price: 120});
+            data.menu.Dinner.push({name: 'Chicken Biryani', price: 150});
 
-        async function loadMenu() {
-            try {
-                const menuData = await apiCall('/menu');
-                data.menu = menuData;
-                renderMenuList();
-                renderCustomerMenu();
-            } catch (error) {
-                console.error('Error loading menu:', error);
-            }
-        }
+            data.instructions.push('Keep tables clean after customers leave');
+            data.instructions.push('Serve hot food within 15 minutes');
+            
+            data.members.push({name: 'Rajesh Kumar', type: 'regular', paid: true});
+            data.members.push({name: 'Priya Sharma', type: 'temp', paid: false});
 
-        async function loadInstructions() {
-            try {
-                const instructions = await apiCall('/instructions');
-                data.instructions = instructions.map(i => i.text);
-                renderInstructions();
-                renderWorkerInstructions();
-            } catch (error) {
-                console.error('Error loading instructions:', error);
-            }
-        }
+            data.feedback.push({customer: 'Anonymous', rating: 5, comment: 'Excellent food quality!', worked: false, date: new Date().toLocaleDateString()});
 
-        async function loadFeedback() {
-            try {
-                const feedback = await apiCall('/feedback', 'GET');
-                data.feedback = feedback.map(f => ({
-                    customer: f.customerName,
-                    rating: f.rating,
-                    comment: f.comment,
-                    worked: f.worked,
-                    date: new Date(f.createdAt).toLocaleDateString(),
-                    id: f._id
-                }));
-                renderFeedback();
-            } catch (error) {
-                console.error('Error loading feedback:', error);
-            }
-        }
-
-        async function loadTableStatus() {
-            try {
-                const tables = await apiCall('/tables');
-                data.tables = tables;
-                renderTableGrid();
-            } catch (error) {
-                console.error('Error loading tables:', error);
-            }
-        }
-
-        async function loadStats() {
-            try {
-                const stats = await apiCall('/stats', 'GET');
-                document.getElementById('totalMembers').textContent = stats.totalMembers;
-                document.getElementById('todayMeals').textContent = stats.todayMeals;
-                document.getElementById('pendingPayments').textContent = stats.pendingPayments;
-            } catch (error) {
-                console.error('Error loading stats:', error);
-            }
-        }
-
-        async function loadPaymentHistory() {
-            try {
-                const payments = await apiCall('/payments', 'GET');
-                data.members = payments;
-                renderPaymentHistory();
-            } catch (error) {
-                console.error('Error loading payments:', error);
-            }
-        }
-
-        async function loadPendingOrders() {
-            try {
-                const orders = await apiCall('/orders?status=pending', 'GET');
-                data.orders = orders;
-                renderPendingOrders();
-            } catch (error) {
-                console.error('Error loading orders:', error);
-            }
-        }
-
-        async function loadTasks() {
-            try {
-                const tasks = await apiCall('/tasks?status=pending', 'GET');
-                data.tasks = tasks;
-                renderCleaningTasks();
-            } catch (error) {
-                console.error('Error loading tasks:', error);
-            }
+            updateStats();
+            renderMenuList();
+            renderCustomerMenu();
+            renderInstructions();
+            renderWorkerInstructions();
+            renderFeedback();
+            renderPaymentHistory();
         }
 
         // Navigation
         function showLogin() {
             document.getElementById('loginSelection').style.display = 'grid';
-            document.getElementById('loginForm').classList.remove('active');
             document.getElementById('ownerDashboard').classList.remove('active');
             document.getElementById('customerDashboard').classList.remove('active');
             document.getElementById('workerDashboard').classList.remove('active');
         }
 
-        function showGuestDashboard() {
-            data.currentUserType = 'customer';
-            data.currentUser = {
-                name: 'Guest',
-                membershipType: 'guest'
-            };
-            document.getElementById('loginSelection').style.display = 'none';
-            document.getElementById('customerDashboard').classList.add('active');
-            renderTableGrid();
-            document.querySelector('#customerDashboard .dashboard-header h2').textContent = '🍴 Welcome, Guest';
-            // Set membership status to guest by default
-            document.getElementById('memberStatus').innerHTML = '<option value="no">Guest (Pay after meal)</option>';
-            document.getElementById('memberStatus').value = 'no';
-            toggleMemberStatus();
-        }
-
-        function switchTab(tab) {
-            const loginTab = document.getElementById('loginTab');
-            const registerTab = document.getElementById('registerTab');
-            const loginContent = document.getElementById('loginFormContent');
-            const registerContent = document.getElementById('registrationFormContent');
-            
-            if (tab === 'login') {
-                loginTab.classList.add('active');
-                registerTab.classList.remove('active');
-                loginTab.style.background = '#fff';
-                registerTab.style.background = 'transparent';
-                loginContent.classList.remove('hidden');
-                registerContent.classList.add('hidden');
-                
-                const userType = data.currentUserType.charAt(0).toUpperCase() + data.currentUserType.slice(1);
-                document.getElementById('formTitle').textContent = userType + ' Login';
-            } else {
-                registerTab.classList.add('active');
-                loginTab.classList.remove('active');
-                registerTab.style.background = '#fff';
-                loginTab.style.background = 'transparent';
-                registerContent.classList.remove('hidden');
-                loginContent.classList.add('hidden');
-                
-                const userType = data.currentUserType.charAt(0).toUpperCase() + data.currentUserType.slice(1);
-                document.getElementById('formTitle').textContent = userType + ' Registration';
-            }
-        }
-
-        function showLoginForm(type) {
-            data.currentUserType = type;
-            document.getElementById('loginSelection').style.display = 'none';
-            document.getElementById('loginForm').classList.add('active');
-            
-            // Reset to login tab
-            switchTab('login');
-            
-            // Update form styling based on user type
-            const loginBtn = document.getElementById('loginBtn');
-            const registerBtn = document.getElementById('registerBtn');
-            const loginTab = document.getElementById('loginTab');
-            const registerTab = document.getElementById('registerTab');
-            
-            if (type === 'owner') {
-                loginBtn.className = 'btn btn-owner';
-                registerBtn.className = 'btn btn-owner';
-                loginTab.style.color = '#ff6b35';
-                registerTab.style.color = '#ff6b35';
-            } else if (type === 'customer') {
-                loginBtn.className = 'btn btn-customer';
-                registerBtn.className = 'btn btn-customer';
-                loginTab.style.color = '#f7931e';
-                registerTab.style.color = '#f7931e';
-            } else if (type === 'worker') {
-                loginBtn.className = 'btn btn-worker';
-                registerBtn.className = 'btn btn-worker';
-                loginTab.style.color = '#dc143c';
-                registerTab.style.color = '#dc143c';
-            }
-            
-            loginBtn.style.width = '100%';
-            registerBtn.style.width = '100%';
-            
-            // Show relevant registration fields
-            document.getElementById('customerRegFields').classList.add('hidden');
-            document.getElementById('workerRegFields').classList.add('hidden');
-            document.getElementById('ownerRegFields').classList.add('hidden');
-            
-            if (type === 'customer') {
-                document.getElementById('customerRegFields').classList.remove('hidden');
-            } else if (type === 'worker') {
-                document.getElementById('workerRegFields').classList.remove('hidden');
-            } else if (type === 'owner') {
-                document.getElementById('ownerRegFields').classList.remove('hidden');
-            }
-        }
-
-        function processLogin() {
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            if (!email || !password) {
-                alert('Please enter both email/phone and password!');
-                return;
-            }
-            
-            // API call to login
-            apiCall('/auth/login', 'POST', { email, password })
-                .then(response => {
-                    authToken = response.token;
-                    localStorage.setItem('authToken', authToken);
-                    data.currentUser = response.user;
-                    
-                    alert('✅ Login successful! Welcome back, ' + response.user.name);
-                    
-                    // Clear form
-                    document.getElementById('loginEmail').value = '';
-                    document.getElementById('loginPassword').value = '';
-                    
-                    showDashboard(data.currentUserType);
-                })
-                .catch(error => {
-                    console.error('Login error:', error);
-                });
-        }
-
-        function processRegistration() {
-            const name = document.getElementById('regName').value;
-            const email = document.getElementById('regEmail').value;
-            const phone = document.getElementById('regPhone').value;
-            const password = document.getElementById('regPassword').value;
-            const confirmPassword = document.getElementById('regConfirmPassword').value;
-            
-            if (!name || !email || !phone || !password || !confirmPassword) {
-                alert('Please fill in all required fields!');
-                return;
-            }
-            
-            if (password.length < 6) {
-                alert('Password must be at least 6 characters long!');
-                return;
-            }
-            
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-            
-            // Prepare registration data
-            const registrationData = {
-                name,
-                email,
-                phone,
-                password,
-                userType: data.currentUserType
-            };
-            
-            // Add type-specific fields
-            if (data.currentUserType === 'customer') {
-                registrationData.membershipType = 'regular';
-                registrationData.address = document.getElementById('regAddress').value;
-            } else if (data.currentUserType === 'worker') {
-                registrationData.position = document.getElementById('regPosition').value;
-                registrationData.experience = parseInt(document.getElementById('regExperience').value) || 0;
-            } else if (data.currentUserType === 'owner') {
-                registrationData.messName = document.getElementById('regMessName').value;
-                registrationData.license = document.getElementById('regLicense').value;
-                registrationData.messAddress = document.getElementById('regMessAddress').value;
-                
-                if (!registrationData.messName || !registrationData.license || !registrationData.messAddress) {
-                    alert('Please fill in all owner-specific fields!');
-                    return;
-                }
-            }
-            
-            // API call to register
-            apiCall('/auth/register', 'POST', registrationData)
-                .then(response => {
-                    authToken = response.token;
-                    localStorage.setItem('authToken', authToken);
-                    data.currentUser = response.user;
-                    
-                    alert('✅ Registration successful! Welcome, ' + response.user.name + '!');
-                    
-                    clearRegistrationForm();
-                    showDashboard(data.currentUserType);
-                })
-                .catch(error => {
-                    console.error('Registration error:', error);
-                });
-        }
-
-        function clearRegistrationForm() {
-            document.getElementById('regName').value = '';
-            document.getElementById('regEmail').value = '';
-            document.getElementById('regPhone').value = '';
-            document.getElementById('regPassword').value = '';
-            document.getElementById('regConfirmPassword').value = '';
-            if (data.currentUserType === 'customer') {
-                document.getElementById('regAddress').value = '';
-            } else if (data.currentUserType === 'worker') {
-                document.getElementById('regExperience').value = '';
-            } else if (data.currentUserType === 'owner') {
-                document.getElementById('regMessName').value = '';
-                document.getElementById('regLicense').value = '';
-                document.getElementById('regMessAddress').value = '';
-            }
-        }
-
-        // Image preview for dish
-        document.addEventListener('DOMContentLoaded', function() {
-            const imageInput = document.getElementById('dishImage');
-            if (imageInput) {
-                imageInput.addEventListener('change', function(e) {
-                    const file = e.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            document.getElementById('imagePreview').style.display = 'block';
-                            document.getElementById('previewImg').src = e.target.result;
-                        };
-                        reader.readAsDataURL(file);
-                    }
-                });
-            }
-        });
-
         function showDashboard(type) {
             document.getElementById('loginSelection').style.display = 'none';
-            document.getElementById('loginForm').classList.remove('active');
             if (type === 'owner') {
                 document.getElementById('ownerDashboard').classList.add('active');
-                // Update welcome message and load data
-                if (data.currentUser) {
-                    document.querySelector('#ownerDashboard .dashboard-header h2').textContent = '👨‍💼 Welcome, ' + data.currentUser.name;
-                }
-                loadStats();
-                loadPaymentHistory();
-                loadMenu();
-                loadInstructions();
-                loadFeedback();
             } else if (type === 'customer') {
                 document.getElementById('customerDashboard').classList.add('active');
-                loadMenu();
-                loadTableStatus();
-                // Update welcome message
-                if (data.currentUser) {
-                    document.querySelector('#customerDashboard .dashboard-header h2').textContent = '🍴 Welcome, ' + data.currentUser.name;
-                    // Auto-set membership status for regular members
-                    if (data.currentUser.membershipType === 'regular') {
-                        const memberSelect = document.getElementById('memberStatus');
-                        memberSelect.innerHTML = <option value="regular">Regular Member (Monthly Subscription)</option>;
-                        document.getElementById('memberStatus').value = 'regular';
-                        toggleMemberStatus();
-                    }
-                }
+                renderTableGrid();
             } else if (type === 'worker') {
                 document.getElementById('workerDashboard').classList.add('active');
-                loadPendingOrders();
-                loadTasks();
-                loadInstructions();
-                // Update welcome message
-                if (data.currentUser) {
-                    document.querySelector('#workerDashboard .dashboard-header h2').textContent = '👨‍🍳 Welcome, ' + data.currentUser.name + (data.currentUser.position ? ' (' + data.currentUser.position + ')' : '');
-                }
+                renderPendingOrders();
+                renderCleaningTasks();
             }
         }
 
@@ -1177,36 +695,15 @@
             const mealType = document.getElementById('mealType').value;
             const name = document.getElementById('dishName').value;
             const price = parseFloat(document.getElementById('dishPrice').value);
-            const imageInput = document.getElementById('dishImage');
 
-            if (!name || !price) {
-                alert('Please enter dish name and price!');
-                return;
+            if (name && price) {
+                data.menu[mealType].push({name, price});
+                document.getElementById('dishName').value = '';
+                document.getElementById('dishPrice').value = '';
+                renderMenuList();
+                renderCustomerMenu();
+                alert('Menu item added successfully!');
             }
-
-            // Create FormData for image upload
-            const formData = new FormData();
-            formData.append('name', name);
-            formData.append('mealType', mealType);
-            formData.append('price', price);
-            
-            if (imageInput.files && imageInput.files[0]) {
-                formData.append('image', imageInput.files[0]);
-            }
-
-            // API call
-            apiCall('/menu', 'POST', formData, true)
-                .then(() => {
-                    alert('✅ Menu item added successfully!');
-                    document.getElementById('dishName').value = '';
-                    document.getElementById('dishPrice').value = '';
-                    document.getElementById('dishImage').value = '';
-                    document.getElementById('imagePreview').style.display = 'none';
-                    loadMenu();
-                })
-                .catch(error => {
-                    console.error('Error adding menu item:', error);
-                });
         }
 
         function renderMenuList() {
@@ -1215,17 +712,12 @@
             
             Object.keys(data.menu).forEach(mealType => {
                 if (data.menu[mealType].length > 0) {
-                    container.innerHTML += <p style="margin-top: 10px; font-weight: bold; color: #333;">${mealType}</p>;
+                    container.innerHTML += `<p style="margin-top: 10px; font-weight: bold; color: #333;">${mealType}</p>`;
                     data.menu[mealType].forEach(item => {
-                        const imageUrl = item.image ? ${API_URL.replace('/api', '')}${item.image} : '';
                         container.innerHTML += `
                             <div class="menu-item">
-                                ${imageUrl ? <img src="${imageUrl}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; float: left; margin-right: 15px;" /> : ''}
-                                <div>
-                                    <h4>${item.name}</h4>
-                                    <p>Base Price: ₹${item.price} | 2x: ₹${(item.price * 1.8).toFixed(2)} | 3x: ₹${(item.price * 2.5).toFixed(2)}</p>
-                                </div>
-                                <div style="clear: both;"></div>
+                                <h4>${item.name}</h4>
+                                <p>Base Price: ₹${item.price} | 2x: ₹${item.price * 1.8} | 3x: ₹${item.price * 2.5}</p>
                             </div>
                         `;
                     });
@@ -1240,15 +732,11 @@
         function addInstruction() {
             const instruction = document.getElementById('newInstruction').value;
             if (instruction) {
-                apiCall('/instructions', 'POST', { text: instruction })
-                    .then(() => {
-                        document.getElementById('newInstruction').value = '';
-                        loadInstructions();
-                        alert('✅ Instruction added successfully!');
-                    })
-                    .catch(error => {
-                        console.error('Error adding instruction:', error);
-                    });
+                data.instructions.push(instruction);
+                document.getElementById('newInstruction').value = '';
+                renderInstructions();
+                renderWorkerInstructions();
+                alert('Instruction added successfully!');
             }
         }
 
@@ -1273,23 +761,15 @@
                         <div class="rating">${'⭐'.repeat(fb.rating)}</div>
                         <p><strong>${fb.customer}</strong> - ${fb.date}</p>
                         <p>${fb.comment}</p>
-                        ${!fb.worked ? <button class="btn btn-owner" onclick="markWorked(${index})" style="margin-top: 10px;">Mark as Worked On</button> : '<p style="color: #28a745; margin-top: 10px;">✓ Worked on</p>'}
+                        ${!fb.worked ? `<button class="btn btn-owner" onclick="markWorked(${index})" style="margin-top: 10px;">Mark as Worked On</button>` : '<p style="color: #28a745; margin-top: 10px;">✓ Worked on</p>'}
                     </div>
                 `;
             });
         }
 
         function markWorked(index) {
-            const feedbackItem = data.feedback[index];
-            if (feedbackItem && feedbackItem.id) {
-                apiCall(/feedback/${feedbackItem.id}/worked, 'PATCH')
-                    .then(() => {
-                        loadFeedback();
-                    })
-                    .catch(error => {
-                        console.error('Error marking feedback:', error);
-                    });
-            }
+            data.feedback[index].worked = true;
+            renderFeedback();
         }
 
         function renderPaymentHistory() {
@@ -1327,12 +807,11 @@
             
             Object.keys(data.menu).forEach(mealType => {
                 if (data.menu[mealType].length > 0) {
-                    container.innerHTML += <h4 style="color: #ff6b35; margin-top: 15px;">${mealType}</h4>;
+                    container.innerHTML += `<h4 style="color: #ff6b35; margin-top: 15px;">${mealType}</h4>`;
                     data.menu[mealType].forEach((item, index) => {
                         container.innerHTML += `
                             <div class="order-item">
-                                ${item.image ? <img src="${item.image}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; margin-right: 15px;" /> : ''}
-                                <div style="flex: 1;">
+                                <div>
                                     <strong>${item.name}</strong>
                                     <p style="color: #666;">Base: ₹${item.price}</p>
                                 </div>
@@ -1426,30 +905,31 @@
                 return;
             }
 
-            const orderData = {
-                customerId: data.currentUser && data.currentUser.id ? data.currentUser.id : null,
-                customerName: data.currentUser ? data.currentUser.name : 'Guest',
-                tableNumber: data.selectedTable + 1,
-                items: data.currentOrder,
-                totalAmount: data.currentOrder.reduce((sum, item) => sum + item.price, 0),
+            data.tables[data.selectedTable] = true;
+            const order = {
+                table: data.selectedTable + 1,
+                items: [...data.currentOrder],
                 isMember: data.isMember,
                 memberType: data.memberType,
-                status: 'pending'
+                timestamp: new Date().toLocaleString()
             };
+            data.orders.push(order);
+            
+            // Add cleaning task
+            data.tasks.push({
+                type: 'pending',
+                table: data.selectedTable + 1,
+                action: 'Serve order'
+            });
 
-            apiCall('/orders', 'POST', orderData)
-                .then(() => {
-                    alert(✅ Order confirmed for Table ${data.selectedTable + 1}! ${data.isMember ? 'Added to your member account.' : 'Bill will be generated after your meal.'});
-                    
-                    // Show feedback section
-                    document.getElementById('feedbackSection').classList.remove('hidden');
-                    document.getElementById('feedbackSection').scrollIntoView({behavior: 'smooth'});
-                    
-                    loadTableStatus();
-                })
-                .catch(error => {
-                    console.error('Error confirming order:', error);
-                });
+            alert(`Order confirmed for Table ${data.selectedTable + 1}! ${data.isMember ? 'Added to your member account.' : 'Bill will be generated after your meal.'}`);
+            
+            // Show feedback section
+            document.getElementById('feedbackSection').classList.remove('hidden');
+            document.getElementById('feedbackSection').scrollIntoView({behavior: 'smooth'});
+            
+            renderPendingOrders();
+            updateStats();
         }
 
         function submitFeedback() {
@@ -1457,28 +937,24 @@
             const comment = document.getElementById('customerFeedback').value;
             
             if (comment) {
-                const feedbackData = {
-                    customerId: data.currentUser && data.currentUser.id ? data.currentUser.id : null,
-                    customerName: data.currentUser ? data.currentUser.name : 'Guest',
+                data.feedback.push({
+                    customer: data.isMember ? 'Member' : 'Guest',
                     rating: rating,
-                    comment: comment
-                };
-
-                apiCall('/feedback', 'POST', feedbackData)
-                    .then(() => {
-                        alert('✅ Thank you for your feedback!');
-                        document.getElementById('customerFeedback').value = '';
-                        
-                        // Reset for new order
-                        data.currentOrder = [];
-                        data.selectedTable = null;
-                        renderCustomerOrder();
-                        document.getElementById('tableSelection').classList.add('hidden');
-                        document.getElementById('feedbackSection').classList.add('hidden');
-                    })
-                    .catch(error => {
-                        console.error('Error submitting feedback:', error);
-                    });
+                    comment: comment,
+                    worked: false,
+                    date: new Date().toLocaleDateString()
+                });
+                
+                alert('Thank you for your feedback!');
+                document.getElementById('customerFeedback').value = '';
+                renderFeedback();
+                
+                // Reset for new order
+                data.currentOrder = [];
+                data.selectedTable = null;
+                renderCustomerOrder();
+                document.getElementById('tableSelection').classList.add('hidden');
+                document.getElementById('feedbackSection').classList.add('hidden');
             }
         }
 
@@ -1498,74 +974,58 @@
         function renderPendingOrders() {
             const container = document.getElementById('pendingOrders');
             container.innerHTML = '';
-            
-            if (data.orders.length === 0) {
-                container.innerHTML = '<p style="color: #666;">No pending orders</p>';
-                return;
-            }
-
             data.orders.forEach((order, index) => {
                 if (order.items && order.items.length > 0) {
                     container.innerHTML += `
                         <div class="task-item">
                             <div>
-                                <strong>Table ${order.tableNumber}</strong>
-                                <p>${order.items.map(i => ${i.name} (${i.size}x)).join(', ')}</p>
-                                <p style="font-size: 0.9em; color: #666;">${new Date(order.createdAt).toLocaleString()}</p>
+                                <strong>Table ${order.table}</strong>
+                                <p>${order.items.map(i => `${i.name} (${i.size}x)`).join(', ')}</p>
+                                <p style="font-size: 0.9em; color: #666;">${order.timestamp}</p>
                             </div>
-                            <button class="complete-btn" onclick="completeOrder('${order._id}')">Served</button>
+                            <button class="complete-btn" onclick="completeOrder(${index})">Served</button>
                         </div>
                     `;
                 }
             });
         }
 
-        function completeOrder(orderId) {
-            apiCall(/orders/${orderId}/status, 'PATCH', { status: 'served' })
-                .then(() => {
-                    alert('✅ Order marked as served!');
-                    loadPendingOrders();
-                    loadTasks();
-                })
-                .catch(error => {
-                    console.error('Error completing order:', error);
-                });
+        function completeOrder(index) {
+            const order = data.orders[index];
+            data.tasks.push({
+                type: 'cleaning',
+                table: order.table,
+                action: 'Clean table after customer leaves'
+            });
+            data.orders.splice(index, 1);
+            renderPendingOrders();
+            renderCleaningTasks();
         }
 
         function renderCleaningTasks() {
             const container = document.getElementById('cleaningTasks');
             container.innerHTML = '';
-            
-            const cleaningTasks = data.tasks.filter(t => t.type === 'cleaning' && t.status === 'pending');
-            
-            if (cleaningTasks.length === 0) {
-                container.innerHTML = '<p style="color: #666;">No cleaning tasks</p>';
-                return;
-            }
-
-            cleaningTasks.forEach((task) => {
-                container.innerHTML += `
-                    <div class="task-item">
-                        <div>
-                            <strong>Table ${task.tableNumber}</strong>
-                            <p>Clean table after customer leaves</p>
+            data.tasks.forEach((task, index) => {
+                if (task.type === 'cleaning') {
+                    container.innerHTML += `
+                        <div class="task-item">
+                            <div>
+                                <strong>Table ${task.table}</strong>
+                                <p>${task.action}</p>
+                            </div>
+                            <button class="complete-btn" onclick="completeTask(${index})">Complete</button>
                         </div>
-                        <button class="complete-btn" onclick="completeTask('${task._id}', ${task.tableNumber})">Complete</button>
-                    </div>
-                `;
+                    `;
+                }
             });
         }
 
-        function completeTask(taskId, tableNumber) {
-            apiCall(/tasks/${taskId}/complete, 'PATCH')
-                .then(() => {
-                    alert('✅ Task completed!');
-                    loadTasks();
-                    loadTableStatus();
-                })
-                .catch(error => {
-                    console.error('Error completing task:', error);
-                });
+        function completeTask(index) {
+            const task = data.tasks[index];
+            data.tables[task.table - 1] = false;
+            data.tasks.splice(index, 1);
+            renderCleaningTasks();
+            renderTableGrid();
         }
 
         function generateBill() {
